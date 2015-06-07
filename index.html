@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Socket.IO Twitter Example</title>
+  </head>
+  <body>
+    <h1>Socket.IO Twitter Example</h1>
+    <ul class="tweets">
+    </ul>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io.connect();
+      $(function(){
+        var tweetList = $('ul.tweets');
+        socket.on('tweets', function(data){
+          tweetList.prepend('<li>'+data.user + ': '+data.text+ '</li>');
+        });
+      });
+    </script>
+  </body>
+</html>
